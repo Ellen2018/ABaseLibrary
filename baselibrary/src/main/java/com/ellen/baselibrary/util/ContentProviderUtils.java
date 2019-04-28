@@ -4,7 +4,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.provider.MediaStore;
 
-import com.ellen.basequickandroid.util.collectionutil.ArrangeInterface;
+import com.ellen.baselibrary.util.collectionutil.ArrangeInterface;
 
 import java.io.File;
 import java.util.ArrayList;
