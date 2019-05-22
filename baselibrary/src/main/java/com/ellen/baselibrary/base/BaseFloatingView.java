@@ -82,7 +82,5 @@ public abstract class BaseFloatingView {
     protected abstract void initView(View view);
     protected abstract void setLayoutParams(WindowManager.LayoutParams layoutParams);
     protected abstract View  getFloatingView(LayoutInflater inflater);
-
-
-
+    
 }
