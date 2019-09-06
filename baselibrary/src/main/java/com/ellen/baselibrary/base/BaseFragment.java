@@ -18,7 +18,7 @@ public abstract class BaseFragment extends Fragment {
             ButterKnifeInterface butterKnifeInterface = (ButterKnifeInterface) this;
             butterKnifeInterface.initButterKnife(view);
         }
-        initView();
+        initView(view);
         initData();
         return view;
     }
@@ -48,7 +48,7 @@ public abstract class BaseFragment extends Fragment {
     }
 
     protected abstract void initData();
-    protected abstract void initView();
+    protected abstract void initView(View view);
     protected abstract int setLayout();
 
     //支持ButterKnife的接口
