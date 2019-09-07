@@ -10,6 +10,20 @@ import android.view.ViewGroup;
 
 public abstract class BaseFragment extends Fragment {
 
+    private boolean isPrepare = false;
+    private boolean isLoazyLoad = false;
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        isPrepare = true;
+        if(this instanceof LazyLoadInterface){
+            LazyLoadInterface lazyLoadInterface = (LazyLoadInterface) this;
+            lazyLoadInterface.lazyLoad();
+            isLoazyLoad = true;
+        }
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,13 +52,14 @@ public abstract class BaseFragment extends Fragment {
 
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
-        if(isVisibleToUser){
+        super.setUserVisibleHint(isVisibleToUser);
+        if(isVisibleToUser && isPrepare && !isLoazyLoad){
             if(this instanceof LazyLoadInterface){
                 LazyLoadInterface lazyLoadInterface = (LazyLoadInterface) this;
                 lazyLoadInterface.lazyLoad();
+                isLoazyLoad = true;
             }
         }
-        super.setUserVisibleHint(isVisibleToUser);
     }
 
     protected abstract void initData();
