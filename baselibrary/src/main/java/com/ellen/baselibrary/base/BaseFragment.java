@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 
 public abstract class BaseFragment extends Fragment {
 
+    //懒加载相关
     private boolean isPrepare = false;
     private boolean isLoazyLoad = false;
 
